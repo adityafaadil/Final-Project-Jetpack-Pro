@@ -60,6 +60,7 @@ class DetailViewModelTest {
         `when`(movId?.let { movieTvRepository.getDetailMovie(it) }).thenReturn(course)
 
         detailViewModel.getDetailMovie.observeForever(movieObserver)
+        //verify
         verify(movieTvRepository).getDetailMovie(movId!!)
 
         assertNotNull(detailViewModel.getDetailMovie)
@@ -78,6 +79,7 @@ class DetailViewModelTest {
         detailViewModel.setFavoriteMovie()
 
         detailViewModel.getDetailMovie.observeForever(movieObserver)
+        //verify
         verify(movieObserver).onChanged(favMovie.value)
 
         val expectedValue = favMovie.value
@@ -102,6 +104,7 @@ class DetailViewModelTest {
         `when`(tvShowId?.let { movieTvRepository.getDetailTvShow(it) }).thenReturn(course)
 
         detailViewModel.getDetailTvShow.observeForever(tvObserver)
+        //verify
         verify(movieTvRepository).getDetailTvShow(tvShowId!!)
 
         assertNotNull(detailViewModel.getDetailTvShow)
@@ -120,6 +123,7 @@ class DetailViewModelTest {
         detailViewModel.setFavoriteTv()
 
         detailViewModel.getDetailTvShow.observeForever(tvObserver)
+        //verify
         verify(tvObserver).onChanged(favTvShow.value)
 
         val expectedValue = favTvShow.value

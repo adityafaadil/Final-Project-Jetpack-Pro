@@ -39,7 +39,9 @@ class MovieTvRepositoryTest {
         movieTvRepository.getMoviePopular()
 
         val movieEntities = Resource.success(PagedListUtil.mockPagedList(MovieDummy.getMovie()))
+        //verify
         verify(local).getDataMovie()
+
         assertNotNull(movieEntities.data)
         assertEquals(movieResponse.size.toLong(), movieEntities.data?.size?.toLong())
     }
@@ -48,10 +50,13 @@ class MovieTvRepositoryTest {
     fun getMovieDetail() {
         val dummyEntity = MutableLiveData<Movie>()
         dummyEntity.value = MovieDummy.getMovieDetail()
+
         `when`(movId.let { local.getMovieId(it) }).thenReturn(dummyEntity)
 
         val movieDetailEntity = LiveDataTestUtil.getValue(movieTvRepository.getDetailMovie(movId))
+        //verify
         verify(local).getMovieId(movId)
+
         assertNotNull(movieDetailEntity.data)
         assertNotNull(movieDetailEntity.data?.title)
     }
@@ -63,7 +68,9 @@ class MovieTvRepositoryTest {
         movieTvRepository.getTvPopular()
 
         val tvEntities = Resource.success(PagedListUtil.mockPagedList(TvShowDummy.getTvShow()))
+        //verify
         verify(local).getDataTv()
+
         assertNotNull(tvEntities)
         assertEquals(tvResponse.size.toLong(), tvEntities.data?.size?.toLong())
     }
@@ -72,10 +79,13 @@ class MovieTvRepositoryTest {
     fun getTvDetail() {
         val dummyEntity = MutableLiveData<TvShow>()
         dummyEntity.value = TvShowDummy.getTvShowDetail()
+
         `when`(tvsId.let { local.getTvId(it) }).thenReturn(dummyEntity)
 
         val tvDetailEntities = LiveDataTestUtil.getValue(movieTvRepository.getDetailTvShow(tvsId))
+        //verify
         verify(local).getTvId(tvsId)
+
         assertNotNull(tvDetailEntities)
         assertNotNull(tvDetailEntities.data?.title)
     }
@@ -87,6 +97,7 @@ class MovieTvRepositoryTest {
         movieTvRepository.getFavoriteMovie()
 
         val favMovEntities = Resource.success(PagedListUtil.mockPagedList(MovieDummy.getMovie()))
+        //verify
         verify(local).getFavMovie()
 
         assertNotNull(favMovEntities)
@@ -100,6 +111,7 @@ class MovieTvRepositoryTest {
         movieTvRepository.getFavoriteTv()
 
         val favTvEntities = Resource.success((PagedListUtil.mockPagedList(TvShowDummy.getTvShow())))
+        //verify
         verify(local).getFavTv()
 
         assertNotNull(favTvEntities)

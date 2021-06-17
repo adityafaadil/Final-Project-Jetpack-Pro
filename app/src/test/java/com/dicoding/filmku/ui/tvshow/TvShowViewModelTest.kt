@@ -16,6 +16,7 @@ import org.junit.Rule
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -43,16 +44,20 @@ class TvShowViewModelTest {
     @Test
     fun getTvShow() {
         val dummyTvShow = Resource.success(pagedList)
-        Mockito.`when`(dummyTvShow.data?.size).thenReturn(10)
+        `when`(dummyTvShow.data?.size).thenReturn(10)
         val courses = MutableLiveData<Resource<PagedList<TvShow>>>()
         courses.value = dummyTvShow
 
-        Mockito.`when`(tvRepository.getTvPopular()).thenReturn(courses)
+        `when`(tvRepository.getTvPopular()).thenReturn(courses)
+
         val tvShowEntity = viewModel.getTvShow().value?.data
+        //verify
         verify(tvRepository).getTvPopular()
+
         assertEquals(10, tvShowEntity?.size)
 
         viewModel.getTvShow().observeForever(observer)
+        //verify
         verify(observer).onChanged(dummyTvShow)
     }
 }

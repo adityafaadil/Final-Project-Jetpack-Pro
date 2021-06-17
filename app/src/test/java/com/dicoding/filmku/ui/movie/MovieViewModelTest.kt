@@ -48,12 +48,16 @@ class MovieViewModelTest {
         listMovie.value = dummyMovie
 
         Mockito.`when`(movieRepository.getMoviePopular()).thenReturn(listMovie)
+
         val movieEntity = viewModel.getMovie().value?.data
+        //verify
         verify(movieRepository).getMoviePopular()
+
         assertNotNull(movieEntity)
         assertEquals(10, movieEntity?.size)
 
         viewModel.getMovie().observeForever(observer)
+        //verify
         verify(observer).onChanged(dummyMovie)
     }
 }

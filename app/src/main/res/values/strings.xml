@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Filmku</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Judul FIlm</string>
+    <string name="description">Deskripsi FIlm</string>
+    <string name="movies">movies</string>
+    <string name="tvShow">tv show</string>
+    <string name="release">tanggal rilis</string>
+    <string name="message_undo">Batalkan menghapus item?</string>
+    <string name="message_ok">Selesai!</string>
+    <string name="daftar_favorite">daftar favorite</string>
+    <string name="menu_favorite">favorite</string>
+    <string name="overview">overview</string>
+    <string name="Movie">movie</string>
+    <string name="TvShow">tvShow</string>
+    <string name="filmku">FILMKU</string>
+</resources>

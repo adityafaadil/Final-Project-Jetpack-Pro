@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dicoding.filmku">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/moviee"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/moviee"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Filmku">
+        <activity android:name=".ui.favorite.FavoriteActivity">
+        </activity>
+        <activity android:name=".ui.detail.MovieTvDetail">
+        </activity>
+        <activity android:name=".ui.home.HomeActivity">
+        </activity>
+        <activity
+            android:name=".ui.SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
